@@ -1,68 +1,140 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Link the style sheet here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Best Cars</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #233142;
+      margin: 0;
+    }
+    .page-shell {
+      padding-bottom: 40px;
+    }
+    .about-card {
+      width: 85%;
+      margin: 40px auto 0;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    .about-header {
+      padding: 36px 36px 18px;
+      background: linear-gradient(135deg, #0f4c81, #1f7a8c);
+      color: white;
+    }
+    .about-header h1 {
+      margin: 0 0 12px;
+      font-size: 2rem;
+    }
+    .about-header p {
+      margin: 0;
+      line-height: 1.7;
+      font-size: 1rem;
+      max-width: 760px;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding: 28px 24px 36px;
+    }
+    .team-card {
+      width: 280px;
+      border: 1px solid #e5eaf2;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .team-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+    .team-card .card-body {
+      padding: 16px 18px 20px;
+    }
+    .team-card .title {
+      font-weight: 700;
+      color: #0f4c81;
+      margin-bottom: 4px;
+    }
+    .team-card p {
+      margin: 6px 0;
+      color: #4f5d75;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+<body>
+  <div class="page-shell">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+      <div class="container-fluid">
+        <h2 style="padding-right: 5%;">Best Cars</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
+    <div class="about-card">
+      <div class="about-header" name="about-header">
+        <h1>About Us</h1>
+        <p>Welcome to Best Cars dealership, home to the best cars in North America. We specialize in quality domestic and imported vehicles, all carefully inspected and offered at fair, transparent prices.</p>
+        <p>Our team is committed to making every visit smooth, from the first test drive to final financing and after-sales support.</p>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Marcus Hill">
+          <div class="card-body">
+            <p class="title">Marcus Hill</p>
+            <p>Dealership Principal</p>
+            <p>Marcus brings over 15 years of automotive experience and a strong focus on honest service and customer satisfaction.</p>
+            <p>marcus@bestcars.com</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" alt="Elena Rodriguez">
+          <div class="card-body">
+            <p class="title">Elena Rodriguez</p>
+            <p>Sales Manager</p>
+            <p>Elena helps customers find the right vehicle for their lifestyle and budget with a consultative, no-pressure approach.</p>
+            <p>elena@bestcars.com</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Daniel Brooks">
+          <div class="card-body">
+            <p class="title">Daniel Brooks</p>
+            <p>Finance Specialist</p>
+            <p>Daniel works closely with buyers to structure flexible financing options and guide them through every step with clarity.</p>
+            <p>daniel@bestcars.com</p>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    
-</div>
-
+  </div>
+</body>
 </html>
