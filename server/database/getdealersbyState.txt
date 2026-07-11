@@ -1,0 +1,5 @@
+Location: c:\Users\Kone\Desktop\Capstone Project\xrwvm-fullstack_developer_capstone\server\database
+
+curl -X GET "http://localhost:3030/fetchDealers/Kansas"
+
+[{"_id":"6a528248142a1424258f084e","id":8,"city":"Topeka","state":"Kansas","address":"288 Larry Place","zip":"66642","lat":"39.0429","long":"-95.7697","short_name":"Bytecard","full_name":"Bytecard Car Dealership","__v":0}]
