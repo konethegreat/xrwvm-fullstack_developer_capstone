@@ -18,6 +18,9 @@
 
     EXPOSE 8000
 
+    ENV backend_url=http://10.1.0.1:3030
+    ENV sentiment_analyzer_url=http://10.1.0.1:5050/
+
     RUN chmod +x /app/entrypoint.sh
 
     ENTRYPOINT ["/bin/bash","/app/entrypoint.sh"]
