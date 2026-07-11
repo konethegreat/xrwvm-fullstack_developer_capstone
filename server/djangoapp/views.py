@@ -1,17 +1,16 @@
 # Uncomment the required imports before adding the code
 
-# from django.shortcuts import render
-# from django.http import HttpResponseRedirect, HttpResponse
-# from django.contrib.auth.models import User
-# from django.shortcuts import get_object_or_404, render, redirect
-# from django.contrib.auth import logout
-# from django.contrib import messages
-# from datetime import datetime
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth import logout, login, authenticate
+from django.contrib import messages
+from datetime import datetime
 
-from django.http import JsonResponse
-from django.contrib.auth import login, authenticate
 import logging
 import json
+import re
 from django.views.decorators.csrf import csrf_exempt
 # from .populate import initiate
 
@@ -25,27 +24,92 @@ logger = logging.getLogger(__name__)
 # Create a `login_request` view to handle sign in request
 @csrf_exempt
 def login_user(request):
-    # Get username and password from request.POST dictionary
+    raw_body = request.body.decode('utf-8', errors='ignore').strip() if request.body else ''
+    data = {}
+
+    if request.content_type and request.content_type.startswith('application/json'):
+        candidates = [raw_body, raw_body.replace('\\"', '"'), raw_body.replace('\\\\"', '"')]
+        if raw_body.startswith('"') and raw_body.endswith('"'):
+            candidates.append(raw_body[1:-1])
+
+        for candidate in candidates:
+            try:
+                parsed = json.loads(candidate)
+            except (json.JSONDecodeError, TypeError):
+                continue
+
+            if isinstance(parsed, dict):
+                data = parsed
+                break
+
+            if isinstance(parsed, str):
+                try:
+                    nested = json.loads(parsed)
+                except (json.JSONDecodeError, TypeError):
+                    nested = None
+                if isinstance(nested, dict):
+                    data = nested
+                    break
+
+        if not data:
+            user_match = re.search(r'"?userName"?\s*:\s*"([^"]+)"', raw_body)
+            pass_match = re.search(r'"?password"?\s*:\s*"([^"]+)"', raw_body)
+            if user_match:
+                data['userName'] = user_match.group(1)
+            if pass_match:
+                data['password'] = pass_match.group(1)
+    else:
+        data = request.POST
+
+    username = data.get('userName') or data.get('username') or data.get('user_name')
+    password = data.get('password') or data.get('pwd')
+
+    if not username or not password:
+        return JsonResponse({'status': 'error', 'message': 'Missing credentials'}, status=400)
+
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return JsonResponse({'userName': username, 'status': 'Authenticated'})
+
+    return JsonResponse({'userName': username, 'status': 'Invalid credentials'}, status=401)
+
+# Create a `logout_request` view to handle sign out request
+@csrf_exempt
+def logout_request(request):
+    logout(request)  # Terminate user session
+    data = {"userName": ""}  # Return empty username
+    return JsonResponse(data)
+
+# Create a `registration` view to handle sign up request
+@csrf_exempt
+def registration(request):
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
-    # Try to check if provide credential can be authenticated
-    user = authenticate(username=username, password=password)
-    data = {"userName": username}
-    if user is not None:
-        # If user is valid, call login method to login current user
+    first_name = data['firstName']
+    last_name = data['lastName']
+    email = data['email']
+    username_exist = False
+
+    try:
+        User.objects.get(username=username)
+        username_exist = True
+    except User.DoesNotExist:
+        logger.debug("{} is new user".format(username))
+
+    if not username_exist:
+        user = User.objects.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+            email=email,
+        )
         login(request, user)
-        data = {"userName": username, "status": "Authenticated"}
-    return JsonResponse(data)
+        return JsonResponse({"userName": username, "status": "Authenticated"})
 
-# Create a `logout_request` view to handle sign out request
-# def logout_request(request):
-# ...
-
-# Create a `registration` view to handle sign up request
-# @csrf_exempt
-# def registration(request):
-# ...
+    return JsonResponse({"userName": username, "error": "Already Registered"})
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
