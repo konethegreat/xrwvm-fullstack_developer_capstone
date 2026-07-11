@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Best Cars</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #eef5ff 0%, #f8fbff 100%);
+      color: #233142;
+      margin: 0;
+    }
+
+    .contact-shell {
+      padding-bottom: 40px;
+    }
+
+    .contact-card {
+      width: min(92%, 1100px);
+      margin: 36px auto 0;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .contact-header {
+      padding: 36px 36px 22px;
+      background: linear-gradient(135deg, #0f4c81, #1f7a8c);
+      color: #fff;
+    }
+
+    .contact-header h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+
+    .contact-header p {
+      margin: 0;
+      line-height: 1.7;
+      font-size: 1rem;
+      max-width: 760px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      padding: 28px 24px 34px;
+    }
+
+    .info-panel, .form-panel {
+      background: #f9fbff;
+      border: 1px solid #e1e8f2;
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .info-panel h3, .form-panel h3 {
+      color: #0f4c81;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .contact-item {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e6edf6;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #1f7a8c;
+    }
+
+    .form-panel form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-panel input,
+    .form-panel textarea {
+      border: 1px solid #cfd9e6;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.95rem;
+    }
+
+    .form-panel button {
+      border: none;
+      background: #1f7a8c;
+      color: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      width: fit-content;
+      cursor: pointer;
+    }
+
+    .form-panel button:hover {
+      background: #0f4c81;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-shell">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: darkturquoise; height: 1in;">
+      <div class="container-fluid">
+        <h2 style="padding-right: 5%;">Best Cars</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="contact-card">
+      <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>We would love to hear from you. Whether you want to book a test drive, ask about financing, or explore your next vehicle, our team is ready to help.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="info-panel">
+          <h3>Visit or Call</h3>
+          <div class="contact-item">
+            <strong>Showroom Address</strong>
+            <span>1255 Oak Avenue, Detroit, MI 48201</span>
+          </div>
+          <div class="contact-item">
+            <strong>Phone</strong>
+            <span>(313) 555-0148</span>
+          </div>
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span>hello@bestcars.com</span>
+          </div>
+          <div class="contact-item">
+            <strong>Hours</strong>
+            <span>Mon - Sat: 9:00 AM to 7:00 PM</span>
+          </div>
+        </div>
+
+        <div class="form-panel">
+          <h3>Send a Message</h3>
+          <form>
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <input type="text" placeholder="Subject">
+            <textarea rows="5" placeholder="How can we help you?"></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
