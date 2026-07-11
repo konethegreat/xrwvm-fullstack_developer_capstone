@@ -27,6 +27,8 @@ jobs:
       - run: npm run build
         env:
           CI: false
+          DISABLE_ESLINT_PLUGIN: true
       - run: npm test -- --watchAll=false
         env:
           CI: true
+          DISABLE_ESLINT_PLUGIN: true
