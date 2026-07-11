@@ -1,0 +1,18 @@
+Workflow: Node.js CI
+Run: Configure test step to pass when no tests are found in frontend app
+Status: SUCCESS
+
+Jobs:
+✓ build (16.x) in 1m 5s
+✓ build (18.x) in 1m 12s
+✓ build (20.x) in 1m 15s
+
+Build Steps (build 20.x):
+1. Set up job - Success
+2. Run actions/checkout@v2 - Success
+3. Use Node.js 20.x - Success
+4. Run npm install - Success
+5. Run npm run build (with env CI: false, DISABLE_ESLINT_PLUGIN: true) - Success
+6. Run npm test -- --watchAll=false --passWithNoTests (with env CI: true, DISABLE_ESLINT_PLUGIN: true) - Success
+7. Post Run actions/checkout@v2 - Success
+8. Complete job - Success
