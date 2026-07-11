@@ -9,10 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server/frontend
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [16.x, 18.x, 20.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,5 +24,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run compile
-      - run: npm test
+      - run: npm run build
+      - run: npm test -- --watchAll=false
