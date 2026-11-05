@@ -131,3 +131,11 @@ dmypy.json
 # Node.js
 node_modules/
 package-lock.json
+
+# >>> AgentOS local agent caches (rule files stay tracked) >>>
+.claude/settings.local.json
+.qoder/settings.local.json
+CLAUDE.local.md
+AGENTS.local.md
+GEMINI.local.md
+# <<< AgentOS <<<
